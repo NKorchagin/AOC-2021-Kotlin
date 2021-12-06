@@ -2,7 +2,9 @@
 
 Welcome to the Advent of Code[^aoc] Kotlin project created by [nkorchagin][github] using the [Advent of Code Kotlin Template][template] delivered by JetBrains.
 
-In this repository, nkorchagin is about to provide solutions for the puzzles using [Kotlin][kotlin] language.
+In this repository will be provided solutions for the puzzles using [Kotlin][kotlin] language.
+
+> Note: All task input files are excluded from the repository with `.gitignore` – we should not post them publicly, as Eric Wastl asks for: [Tweet](https://twitter.com/ericwastl/status/1465805354214830081). Test inputs from AOC website are public and included to the repository.
 
 If you're stuck with Kotlin-specific questions or anything related to this template, check out the following resources:
 
