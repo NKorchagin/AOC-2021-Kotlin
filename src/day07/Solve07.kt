@@ -8,9 +8,10 @@ fun main() {
     fun totalFuel(positions: List<Int>, fuelFor: (Int) -> Int): Int {
         val min = positions.minOrNull() ?: 0
         val max = positions.maxOrNull() ?: 0
-        return (min..max).minOfOrNull { position ->
-            positions.sumOf { fuelFor(abs(position - it)) }
-        } ?: 0
+        return (min..max)
+            .minOfOrNull { position ->
+                positions.sumOf { fuelFor(abs(position - it)) }
+            } ?: 0
     }
 
     fun solve(fileName: String, fuelFor: (Int) -> Int): Int {
@@ -24,7 +25,10 @@ fun main() {
     }
 
     fun solveB(fileName: String): Int {
-        return solve(fileName) { it * (it + 1) / 2 }
+        fun arithmeticSequenceSum(size: Int): Int {
+            return size * (size + 1) / 2
+        }
+        return solve(fileName, ::arithmeticSequenceSum)
     }
 
     check(solveA("day07/Example") == 37)
