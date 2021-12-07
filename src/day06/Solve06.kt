@@ -1,9 +1,13 @@
+package day06
+
+import readInput
+
 fun main() {
     val ageToDeliver = 6
     val ageToDeliverFirstBaby = 8
 
     fun handleDay(ages: Map<Int, Long>): Map<Int, Long> {
-        var ages = ages.toMutableMap()
+        val ages = ages.toMutableMap()
         val fishesDelivering = ages[0] ?: 0
         for (age in 0 until ageToDeliverFirstBaby) {
             ages[age] = ages.getOrDefault(age + 1, 0)// shift pregnant by 1 day
@@ -27,18 +31,18 @@ fun main() {
         return amountOfFish(fishAges, days)
     }
 
-    fun part1(input: String): Long {
-        return solve(input, 80)
+    fun solveA(fileName: String): Long {
+        return solve(fileName, 80)
     }
 
-    fun part2(input: String): Long {
-        return solve(input, 256)
+    fun solveB(fileName: String): Long {
+        return solve(fileName, 256)
     }
 
-    check(part1("Day06/Day06_test") == 5934L)
-    check(part2("Day06/Day06_test") == 26984457539L)
+    check(solveA("day06/Example") == 5934L)
+    check(solveB("day06/Example") == 26984457539L)
 
-    val input = "Day06/Day06.ignore"
-    println("Part1: ${part1(input)}")
-    println("Part1: ${part2(input)}")
+    val input = "day06/Input.ignore"
+    println("Part1: ${solveA(input)}")
+    println("Part2: ${solveB(input)}")
 }
