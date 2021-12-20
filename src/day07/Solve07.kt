@@ -24,6 +24,15 @@ fun main() {
         return solve(fileName) { it }
     }
 
+    fun solveAMedian(fileName: String): Int {
+        val input = readInput(fileName)
+        val positions = input.first().split(',').map { it.toInt() }
+        fun List<Int>.median() : Int {
+            return sorted()[size / 2]
+        }
+        return positions.median().let { median -> positions.sumOf { abs(it - median) } }
+    }
+
     fun solveB(fileName: String): Int {
         fun arithmeticSequenceSum(size: Int): Int {
             return size * (size + 1) / 2
@@ -32,9 +41,11 @@ fun main() {
     }
 
     check(solveA("day07/Example") == 37)
+    check(solveAMedian("day07/Example") == 37)
     check(solveB("day07/Example") == 168)
 
     val input = "day07/Input.ignore"
     println("Part1: ${solveA(input)}")
+    println("Part1 median: ${solveA(input)}")
     println("Part2: ${solveB(input)}")
 }
