@@ -2,7 +2,10 @@ package day07
 
 import readInput
 import kotlin.math.abs
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTimedValue
 
+@ExperimentalTime
 fun main() {
 
     fun totalFuel(positions: List<Int>, fuelFor: (Int) -> Int): Int {
@@ -45,7 +48,12 @@ fun main() {
     check(solveB("day07/Example") == 168)
 
     val input = "day07/Input.ignore"
-    println("Part1: ${solveA(input)}")
-    println("Part1 median: ${solveA(input)}")
-    println("Part2: ${solveB(input)}")
+    val (part1, time1) = measureTimedValue { solveA(input) }
+    println("Part1: $part1 takes: ${time1.inWholeMilliseconds}ms")
+
+    val (part1m, time1m) = measureTimedValue { solveAMedian(input) }
+    println("Part1 median: $part1m takes: ${time1m.inWholeMilliseconds}ms")
+
+    val (part2, time2) = measureTimedValue { solveB(input) }
+    println("Part1: $part2 takes: ${time2.inWholeMilliseconds}ms")
 }

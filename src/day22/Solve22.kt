@@ -4,10 +4,13 @@ import readInput
 
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTimedValue
 
+@ExperimentalTime
 fun main() {
 
-    fun run(steps: List<Step>): Long {
+    fun cubesOnApplying(steps: List<Step>): Long {
         var resultMap = mutableMapOf<Cuboid, Int>()
         steps.forEach() { step ->
             var stepMap = mutableMapOf<Cuboid, Int>()
@@ -30,12 +33,12 @@ fun main() {
     fun solveA(fileName: String): Long {
         val steps = readInput(fileName).map(Step::from)
             .filter { it.isInsideInitializationArea }
-        return run(steps)
+        return cubesOnApplying(steps)
     }
 
     fun solveB(fileName: String): Long {
         val steps = readInput(fileName).map(Step::from)
-        return run(steps)
+        return cubesOnApplying(steps)
     }
 
     check(solveA("day22/Example") == 590784L)
@@ -43,8 +46,10 @@ fun main() {
     check(solveB("day22/ExampleB") == 2758514936282235L)
 
     val input = "day22/Input.ignore"
-    println("Part1: ${solveA(input)}")
-    println("Part2: ${solveB(input)}")
+    val (part1, time1) = measureTimedValue { solveA(input) }
+    println("Part1: $part1 takes: ${time1.inWholeMilliseconds}ms")
+    val (part2, time2) = measureTimedValue { solveB(input) }
+    println("Part2: $part2 takes: ${time2.inWholeMilliseconds}ms")
 }
 
 fun <T> MutableMap<T, Int>.decrease(key: T, amount: Int = 1): MutableMap<T, Int> {

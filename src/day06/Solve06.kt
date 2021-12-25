@@ -1,7 +1,10 @@
 package day06
 
 import readInput
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTimedValue
 
+@ExperimentalTime
 fun main() {
     val ageToDeliver = 6
     val ageToDeliverFirstBaby = 8
@@ -43,6 +46,8 @@ fun main() {
     check(solveB("day06/Example") == 26984457539L)
 
     val input = "day06/Input.ignore"
-    println("Part1: ${solveA(input)}")
-    println("Part2: ${solveB(input)}")
+    val (part1, time1) = measureTimedValue { solveA(input) }
+    println("Part1: $part1 takes: ${time1.inWholeMilliseconds}ms")
+    val (part2, time2) = measureTimedValue { solveB(input) }
+    println("Part2: $part2 takes: ${time2.inWholeMilliseconds}ms")
 }

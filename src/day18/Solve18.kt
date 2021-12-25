@@ -1,7 +1,10 @@
 package day18
 
 import readInput
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTimedValue
 
+@ExperimentalTime
 fun main() {
 
     fun solveA(fileName: String): Int {
@@ -22,8 +25,10 @@ fun main() {
     check(solveB("day18/Example") == 3993)
 
     val input = "day18/Input.ignore"
-    println("Part1: ${solveA(input)}")
-    println("Part2: ${solveB(input)}")
+    val (part1, time1) = measureTimedValue { solveA(input) }
+    println("Part1: $part1 takes: ${time1.inWholeMilliseconds}ms")
+    val (part2, time2) = measureTimedValue { solveB(input) }
+    println("Part2: $part2 takes: ${time2.inWholeMilliseconds}ms")
 }
 
 private class SnailfishNumber(
