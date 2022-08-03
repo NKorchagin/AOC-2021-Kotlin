@@ -47,7 +47,7 @@ fun main() {
 
     val input = "day06/Input.ignore"
     val (part1, time1) = measureTimedValue { solveA(input) }
-    println("Part1: $part1 takes: ${time1.inWholeMilliseconds}ms")
+    println("Part1: $part1 takes: ${time1.inWholeMilliseconds}s")
     val (part2, time2) = measureTimedValue { solveB(input) }
     println("Part2: $part2 takes: ${time2.inWholeMilliseconds}ms")
 }
